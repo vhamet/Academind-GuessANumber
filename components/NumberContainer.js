@@ -1,11 +1,15 @@
 import React from 'react';
-import { View, Text, StyleSheet, _Text } from 'react-native';
+import { View, StyleSheet, _Text } from 'react-native';
+
+import CustomText, { CUSTOM_TEXT_STYLES } from './CustomText';
 
 import Colors from '../constants/colors';
 
 const NumberContainer = ({ children }) => (
   <View style={styles.container}>
-    <Text style={styles.number}>{children}</Text>
+    <CustomText type={CUSTOM_TEXT_STYLES.TITLE} style={styles.number}>
+      {children}
+    </CustomText>
   </View>
 );
 
@@ -20,7 +24,7 @@ const styles = StyleSheet.create({
   },
   number: {
     color: Colors.primary_2,
-    fontSize: 22
+    fontSize: 22,
   },
 });
 

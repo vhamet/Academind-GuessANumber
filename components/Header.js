@@ -1,11 +1,13 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+
+import CustomText, { CUSTOM_TEXT_STYLES } from './CustomText';
 
 import Colors from '../constants/colors';
 
 const Header = ({ title }) => (
   <View style={styles.header}>
-    <Text style={styles.headerTitle}>{title}</Text>
+    <CustomText type={CUSTOM_TEXT_STYLES.TITLE} style={styles.headerTitle}>{title}</CustomText>
   </View>
 );
 
@@ -20,7 +22,6 @@ const styles = StyleSheet.create({
   headerTitle: {
     color: 'white',
     fontSize: 18,
-    fontFamily: 'open-sans-bold',
   },
 });
 

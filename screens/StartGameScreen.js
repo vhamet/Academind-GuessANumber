@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native';
+import { View, StyleSheet, Alert } from 'react-native';
 
 import Card from '../components/Card';
 import Input from '../components/Input';
 import NumberContainer from '../components/NumberContainer';
+import CustomText, { CUSTOM_TEXT_STYLES } from '../components/CustomText';
+import CustomButton from '../components/CustomButton';
 
 import Colors from '../constants/colors';
 
@@ -38,11 +40,10 @@ const StartGameScreen = ({ selectedNumber, setSelectedNumber, startGame }) => {
   if (confirmed) {
     confirmedOutput = (
       <Card style={styles.startContainer}>
-        <Text style={styles.startText}>You chose</Text>
+        <CustomText style={styles.startText}>You chose</CustomText>
         <NumberContainer>{selectedNumber}</NumberContainer>
-        <Button
+        <CustomButton
           title="START THE GAME"
-          color="#6C5B7B"
           onPress={() => startGame(selectedNumber)}
         />
       </Card>
@@ -51,9 +52,9 @@ const StartGameScreen = ({ selectedNumber, setSelectedNumber, startGame }) => {
 
   return (
     <View style={styles.screen}>
-      <Text style={styles.title}>Start a New Game !</Text>
+      <CustomText type={CUSTOM_TEXT_STYLES.TITLE} style={styles.title}>Start a New Game !</CustomText>
       <Card style={styles.inputContainer}>
-        <Text style={styles.selectText}>Select a Number</Text>
+      <CustomText style={styles.selectText}>Select a Number</CustomText>
         <Input
           style={styles.input}
           blurOnSubmit
@@ -66,12 +67,11 @@ const StartGameScreen = ({ selectedNumber, setSelectedNumber, startGame }) => {
         />
         <View style={styles.buttonContainer}>
           <View style={styles.button}>
-            <Button title="Reset" color="#6C5B7B" onPress={resetInputHandler} />
+            <CustomButton title="Reset" onPress={resetInputHandler} />
           </View>
           <View style={styles.button}>
-            <Button
+            <CustomButton
               title="Confirm"
-              color="#6C5B7B"
               onPress={confirmInputHandler}
             />
           </View>
@@ -93,7 +93,6 @@ const styles = StyleSheet.create({
     fontSize: 20,
     marginVertical: 10,
     color: Colors.primary_2,
-    fontFamily: 'open-sans-bold',
   },
   inputContainer: {
     width: 300,

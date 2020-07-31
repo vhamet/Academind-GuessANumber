@@ -1,21 +1,37 @@
 import React from 'react';
-import { View, Text, Button, StyleSheet } from 'react-native';
+import { View, Image, StyleSheet } from 'react-native';
 
 import NumberContainer from '../components/NumberContainer';
 import Card from '../components/Card';
+import CustomText, { CUSTOM_TEXT_STYLES } from '../components/CustomText';
+import CustomButton from '../components/CustomButton';
 
 import Colors from '../constants/colors';
 
 const GameOver = ({ userNumber, numberOfRounds, onRestart }) => (
   <View style={styles.screen}>
     <Card style={styles.inputContainer}>
-      <Text style={styles.text}>GAMER OVER !</Text>
-      <Text style={styles.text}>Number was {userNumber}</Text>
-      <Text style={styles.text}>Number of rounds</Text>
+      <CustomText type={CUSTOM_TEXT_STYLES.TITLE} style={styles.text}>
+        GAMER OVER !
+      </CustomText>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require('../assets/success.png')}
+          style={styles.image}
+          resizeMode="cover"
+        />
+      </View>
+
+      <CustomText style={styles.text}>
+        Number was <CustomText type={CUSTOM_TEXT_STYLES.TITLE}>{userNumber}</CustomText>
+      </CustomText>
+      <CustomText style={styles.text}>
+        Number of rounds
+      </CustomText>
       <NumberContainer>{numberOfRounds}</NumberContainer>
       <View style={styles.buttonContainer}>
         <View style={styles.button}>
-          <Button title="RESTART" color="#6C5B7B" onPress={onRestart} />
+          <CustomButton title="RESTART" onPress={onRestart} />
         </View>
       </View>
     </Card>
@@ -27,6 +43,7 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 10,
     alignItems: 'center',
+    justifyContent: 'center',
     backgroundColor: Colors.primary_4,
   },
   inputContainer: {
@@ -41,11 +58,24 @@ const styles = StyleSheet.create({
     paddingHorizontal: 15,
   },
   button: {
-    width: '45%',
+    width: '50%',
   },
   text: {
     color: Colors.primary_2,
     textAlign: 'center',
+  },
+  imageContainer: {
+    height: 150,
+    width: 150,
+    marginVertical: 10,
+    borderRadius: 75,
+    borderColor: Colors.primary_2,
+    borderWidth: 1,
+    overflow: 'hidden',
+  },
+  image: {
+    width: '100%',
+    height: '100%',
   },
 });
 
